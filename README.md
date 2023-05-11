@@ -120,7 +120,7 @@ def main_loop():
 # Call the main game loop
 main_loop()
 
-Programming Ideas: In order to develop the game of Connect 4, I will need to use a number of programming ideas, such as:
+Programming Concepts: In order to develop the game of Connect 4, I will need to use a number of programming concepts, such as:
 • Arrays: I'll use arrays to store the playing field and track the pieces that each player has used.
 • Loops: In order to iterate around the game board, check for winning criteria, and provide players the opportunity to take turns, I will utilize loops.
 • Conditional Statements: To check for winning criteria and decide whether the game is ended, I will use conditional statements.
