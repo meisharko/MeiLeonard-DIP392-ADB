@@ -99,14 +99,74 @@ def main_loop():
         # Update the screen
         pygame.display.update()
 
-   # Game over message
+    # Game over message
     if game_over:
         font = pygame.font.Font(None, 36)
         text = font.render(f"Player {turn} wins!", True, RED if turn == 1 else YELLOW)
         text_rect = text.get_rect(center=(WINDOW_SIZE[0] // 2, WINDOW_SIZE[1] // 2))
         screen.blit(text, text_rect)
 
-   # Keep the window open until the user closes it
+    # Keep the window open until the user closes it
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+# Define the test programs
+# Define the test programs
+test_programs = [
+    {"id": 1, "description": "Testing the GUI of the game software", "input": None, "expected": "Visually appealing and easy-to-use GUI"},
+    {"id": 2, "description": "Testing the starting of a new game", "input": "Clicking the 'New Game' button", "expected": "Reset game board and start a new game"},
+    # Add more test programs as needed
+]
+
+# Define the function to run the test programs
+def run_tests():
+    for program in test_programs:
+        print(f"Test Program #{program['id']}: {program['description']}")
+        print(f"Input: {program['input']}")
+        print(f"Expected Results: {program['expected']}")
+        
+        # TODO: Implement the test program and capture the actual results
+        # ...
+        
+        print("Actual Results: N/A")  # Placeholder for actual test results
+        print()
+
+# Define the main game loop
+def main_loop():
+    running = True
+    game_over = False
+
+    # Loop until the user clicks the close button or the game is over
+    while running and not game_over:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN and not game_over:
+                # Get the column where the user clicked
+                col = event.pos[0] // CELL_SIZE
+                if drop_piece(col):
+                    if check_win():
+                        print(f"Player {turn} wins!")
+                        game_over = True
+                    else:
+                        draw_board()
+
+        # Update the screen
+        pygame.display.update()
+
+    # Game over message
+    if game_over:
+        font = pygame.font.Font(None, 36)
+        text = font.render(f"Player {turn} wins!", True, RED if turn == 1 else YELLOW)
+        text_rect = text.get_rect(center=(WINDOW_SIZE[0] // 2, WINDOW_SIZE[1] // 2))
+        screen.blit(text, text_rect)
+
+        # Run the tests after the game is over
+        run_tests()
+
+    # Keep the window open until the user closes it
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -114,7 +174,7 @@ def main_loop():
 
         pygame.display.update()
 
-   # Quit pygame
+    # Quit pygame
     pygame.quit()
 
 # Call the main game loop
@@ -144,3 +204,37 @@ Other notes:
 • Using Python's built-in "pickle" module, we created a feature that allows game states to be saved and loaded. The game board, the current player, and the score are all part of the recorded data.
 • We created tags for each significant release of our code using Git to version control it.
 • Using Pyinstaller, we made a standalone executable for the game and tested it on both Windows and Mac OS.
+
+Testing
+Instructions: Week 10
+Journal
+The following prompts are meant to aid your thought process as you complete the testing portion of this exercise. Please respond to each of the prompts below and feel free to add additional notes.
+●	Have you changed any requirements since you completed the black box test plan? If so, list changes below and update your black-box test plan appropriately.
+●	No changes have been made to the requirements since completing the black box test plan.
+
+●	List the classes of your implementation. For each class, list equivalence classes, boundary values, and paths through code that you should test.
+
+•	Class: GameBoard Equivalence classes:
+•	Game board size: 7x6, 8x8, 10x7, etc.
+•	Number of players: 2
+•	Player moves: valid moves, invalid moves
+•	Winning conditions: horizontal, vertical, diagonal, tie 
+
+•	Boundary values:
+•	Minimum game board size: 7x6
+•	Maximum game board size: No maximum size specified
+•	Maximum number of players: 2 
+
+•	Paths through code:
+•	Initialization of game board
+•	Validating player moves
+•	Checking for winning conditions
+•	Handling ties
+
+•	Class: Player Equivalence classes:
+•	Player ID: 1, 2 Boundary values: None Paths through code:
+•	Initialization of player
+•	Handling player moves
+
+●	Other notes:
+●	It is important to test the game thoroughly to ensure that it meets all of the specified requirements and is easy to use for the end-users.
