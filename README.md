@@ -99,14 +99,14 @@ def main_loop():
         # Update the screen
         pygame.display.update()
 
-    # Game over message
+   # Game over message
     if game_over:
         font = pygame.font.Font(None, 36)
         text = font.render(f"Player {turn} wins!", True, RED if turn == 1 else YELLOW)
         text_rect = text.get_rect(center=(WINDOW_SIZE[0] // 2, WINDOW_SIZE[1] // 2))
         screen.blit(text, text_rect)
 
-    # Keep the window open until the user closes it
+   # Keep the window open until the user closes it
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -114,7 +114,7 @@ def main_loop():
 
         pygame.display.update()
 
-    # Quit pygame
+   # Quit pygame
     pygame.quit()
 
 # Call the main game loop
