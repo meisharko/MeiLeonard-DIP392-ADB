@@ -1,3 +1,5 @@
+The code we have prepared for implementation phase of the project is:
+
 import pygame
 
 # Initialize pygame
@@ -117,3 +119,28 @@ def main_loop():
 
 # Call the main game loop
 main_loop()
+
+Programming Ideas: In order to develop the game of Connect 4, I will need to use a number of programming ideas, such as:
+• Arrays: I'll use arrays to store the playing field and track the pieces that each player has used.
+• Loops: In order to iterate around the game board, check for winning criteria, and provide players the opportunity to take turns, I will utilize loops.
+• Conditional Statements: To check for winning criteria and decide whether the game is ended, I will use conditional statements.
+• Event Handling: I'll use event handling to track when a player clicks a column to drop a piece, updating the game board as a result.
+• Graphical User Interface (GUI): To build the game's graphical user interface and enable user interaction, I'll utilize a GUI framework like Pygame.
+
+Follow these steps to play Connect 4:
+1. Get Python (version 3.6 or higher) from https://www.python.org/downloads/ and install it.
+2. Download the ZIP file or clone the repository.
+3. Utilize the terminal or command prompt to navigate to the project directory.
+4. To install the Pygame library, issue the command "pip install pygame".
+5. To launch the game, use "python connect4.py" at the command line.
+6. A blank Connect 4 board will appear in the game window when it opens.
+7. To drop a component, click a column.
+8. Each player takes a turn putting one of their colored discs into a column.
+9. Play continues until one player connects four discs in a row to win, or the board fills up and the game is declared a draw.
+10. Press the 'r' key to restart the game. Press the 'q' key to end the game.
+
+Other notes:
+• We had to experiment with various approaches to get Pygame's event handling to function properly after running into some problems.
+• Using Python's built-in "pickle" module, we created a feature that allows game states to be saved and loaded. The game board, the current player, and the score are all part of the recorded data.
+• We created tags for each significant release of our code using Git to version control it.
+• Using Pyinstaller, we made a standalone executable for the game and tested it on both Windows and Mac OS.
