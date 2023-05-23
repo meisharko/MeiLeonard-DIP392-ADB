@@ -176,7 +176,7 @@ def start_game():
     # Game over message
     if game_over:
         font = pygame.font.Font(None, 36)
-        text = font.render(f"Player {turn} wins!", True, RED if turn == 1 else YELLOW)
+        text = font.render(f"Player {turn} wins!", True, RED if turn == 2 else YELLOW)
         text_rect = text.get_rect(center=(WINDOW_SIZE[0] // 2, WINDOW_SIZE[1] // 2))
         screen.blit(text, text_rect)
 
