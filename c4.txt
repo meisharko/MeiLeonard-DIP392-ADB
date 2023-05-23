@@ -92,6 +92,58 @@ def main_loop():
     running = True
     game_over = False
 
+    # Intro message
+    intro_font = pygame.font.Font(None, 48)
+    intro_text = intro_font.render("Welcome to Connect 4!", True, RED)
+    intro_text_rect = intro_text.get_rect(center=(WINDOW_SIZE[0] // 2, WINDOW_SIZE[1] // 2 - 50))
+
+    # Start game button
+    start_game_button = pygame.Rect(250, 300, 200, 50)
+    start_game_text = intro_font.render("Start Game", True, BLACK)
+    start_game_text_rect = start_game_text.get_rect(center=start_game_button.center)
+
+    # Quit button
+    quit_button = pygame.Rect(250, 380, 200, 50)
+    quit_text = intro_font.render("Quit", True, BLACK)
+    quit_text_rect = quit_text.get_rect(center=quit_button.center)
+
+    # Loop until the user clicks the close button or starts the game
+    while running and not game_over:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN and not game_over:
+                # Check if the start game button was clicked
+                if start_game_button.collidepoint(event.pos):
+                    game_over = True
+                # Check if the quit button was clicked
+                elif quit_button.collidepoint(event.pos):
+                    running = False
+
+        # Draw the intro screen
+        screen.fill(BLACK)
+        screen.blit(intro_text, intro_text_rect)
+        pygame.draw.rect(screen, RED, start_game_button)
+        screen.blit(start_game_text, start_game_text_rect)
+        pygame.draw.rect(screen, RED, quit_button)
+        screen.blit(quit_text, quit_text_rect)
+
+        # Update the screen
+        pygame.display.update()
+
+    if game_over:
+        # Call the game start function
+        start_game()
+
+    # Quit pygame
+    pygame.quit()
+
+# Function to start the game
+def start_game():
+    running = True
+    game_over = False
+
     # Loop until the user clicks the close button or the game is over
     while running and not game_over:
         # Handle events
@@ -124,7 +176,7 @@ def main_loop():
     # Game over message
     if game_over:
         font = pygame.font.Font(None, 36)
-        text = font.render(f"Player {turn} wins!", True, RED if turn == 1 else YELLOW)
+        text = font.render(f"Player {turn} wins!", True, RED if turn == 2 else YELLOW)
         text_rect = text.get_rect(center=(WINDOW_SIZE[0] // 2, WINDOW_SIZE[1] // 2))
         screen.blit(text, text_rect)
 
